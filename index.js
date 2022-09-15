@@ -4,6 +4,7 @@ const regvalidation=require("./validator")
 const app=express()
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+//a route a add a document to the database after being validated.
 app.post("/add",(req,res)=>{
 	const { error,value }=regvalidation.validate(req.body)
 	if(error){
@@ -26,6 +27,7 @@ app.post("/add",(req,res)=>{
 	
 	
 })
+//a route to get all documents in the database
 app.get("/get",(req,res)=>{
 	User.find({},(err,docs)=>{
 		res.send(docs);
